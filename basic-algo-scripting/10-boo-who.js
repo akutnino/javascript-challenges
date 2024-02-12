@@ -8,3 +8,12 @@ function booWho(bool) {
 
 const output = booWho(myVariable);
 console.log(output);
+
+// Other Solutions...
+function solutionTwo(bool) {
+  if (bool === true || bool === false) {
+    return true;
+  } else {
+    return false;
+  }
+}
