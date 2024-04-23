@@ -260,8 +260,11 @@ function flattenArray(array) {
 	return myArray;
 }
 
-// prettier-ignore
-const flattenArrayOutput = flattenArray([[1, 2], [3, 4, 5], [6, [7, [8, 9]], 10]]);
+const flattenArrayOutput = flattenArray([
+	[[1], 2],
+	[[3, 4], 5],
+	[6, [7, [8, 9]], 10]
+]);
 console.log(flattenArrayOutput);
 
 // CHALLENGE 10: ANAGRAM
@@ -284,9 +287,7 @@ function isAnagram(string1, string2) {
 		.filter((char) => (lowercaseArray.includes(char) ? true : false))
 		.sort();
 
-	// const isAnagram =
-
-	return [charArrayOne, charArrayTwo];
+	return charArrayOne.join('') === charArrayTwo.join('');
 }
 
 const isAnagramOutput = isAnagram('Dormitory', 'dirty room##');
