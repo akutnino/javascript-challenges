@@ -210,7 +210,7 @@ function longestWord(string) {
 		word.length === largestLength ? true : false
 	);
 
-	return charArray;
+	return output.length > 1 ? output : output[0];
 }
 
 const longestWordOutput = longestWord(`Hello there, my name is Nino`);
@@ -221,17 +221,73 @@ console.log(longestWordOutput);
 // ex. chunckArray([1, 2, 3, 4, 5, 6, 7], 3) === [[1, 2, 3], [4, 5, 6], [7]]
 
 function chunkArray(array, length) {
-	return;
+	const ouptutArray = [];
+	let chunckArray = [];
+
+	for (let i = 0; i < array.length; i++) {
+		if (chunckArray.length === length) {
+			ouptutArray.push(chunckArray);
+			chunckArray = [];
+		}
+
+		chunckArray.push(array[i]);
+	}
+
+	if (chunckArray.length > 0) {
+		ouptutArray.push(chunckArray);
+		chunckArray = [];
+	}
+
+	return ouptutArray;
 }
+
+const chunckArrayOutput = chunkArray([1, 2, 3, 4, 5, 6, 7], 4);
+console.log(chunckArrayOutput);
 
 // CHALLENGE 9: FLATTEN ARRAY
 // Take an array of arrays and flatten to a single array
 // ex. [[1, 2], [3, 4], [5, 6]] === [1, 2, 3, 4, 5, 6, 7]
 
 function flattenArray(array) {
-	return;
+	let myArray = array;
+	let myDepth = 1;
+
+	while (myArray.some((element) => typeof element === 'object')) {
+		myArray = myArray.flat(myDepth);
+		myDepth = myDepth + 1;
+	}
+
+	return myArray;
 }
 
-const flattenArrayOutput = flattenArray();
+// prettier-ignore
+const flattenArrayOutput = flattenArray([[1, 2], [3, 4, 5], [6, [7, [8, 9]], 10]]);
+console.log(flattenArrayOutput);
 
 // CHALLENGE 10: ANAGRAM
+// Return true if anagram and false is not
+// ex. 'elbow' === 'below'
+// ex. 'Dormitory' === 'dirty room##'
+
+function isAnagram(string1, string2) {
+	const lowercaseArray = [];
+
+	for (let index = 'a'.charCodeAt(); index < 'z'.charCodeAt(); index++) {
+		lowercaseArray.push(String.fromCharCode(index));
+	}
+
+	const charArrayOne = [...string1.toLowerCase()]
+		.filter((char) => (lowercaseArray.includes(char) ? true : false))
+		.sort();
+
+	const charArrayTwo = [...string2.toLowerCase()]
+		.filter((char) => (lowercaseArray.includes(char) ? true : false))
+		.sort();
+
+	// const isAnagram =
+
+	return [charArrayOne, charArrayTwo];
+}
+
+const isAnagramOutput = isAnagram('Dormitory', 'dirty room##');
+console.log(isAnagramOutput);
