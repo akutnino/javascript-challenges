@@ -214,9 +214,9 @@ function longestWord(string) {
 }
 
 const longestWordOutput = longestWord(`Hello there, my name is Nino`);
-console.log(longestWordOutput);
+// console.log(longestWordOutput);
 
-// CHALLENGE 9: ARRAY CHUNKING
+// CHALLENGE 8: ARRAY CHUNKING
 // Split an array into chuncked arrays of a specific length
 // ex. chunckArray([1, 2, 3, 4, 5, 6, 7], 3) === [[1, 2, 3], [4, 5, 6], [7]]
 
@@ -242,7 +242,7 @@ function chunkArray(array, length) {
 }
 
 const chunckArrayOutput = chunkArray([1, 2, 3, 4, 5, 6, 7], 4);
-console.log(chunckArrayOutput);
+// console.log(chunckArrayOutput);
 
 // CHALLENGE 9: FLATTEN ARRAY
 // Take an array of arrays and flatten to a single array
@@ -265,7 +265,7 @@ const flattenArrayOutput = flattenArray([
 	[[3, 4], 5],
 	[6, [7, [8, 9]], 10]
 ]);
-console.log(flattenArrayOutput);
+// console.log(flattenArrayOutput);
 
 // CHALLENGE 10: ANAGRAM
 // Return true if anagram and false is not
@@ -291,7 +291,7 @@ function isAnagram(string1, string2) {
 }
 
 const isAnagramOutput = isAnagram('Dormitory', 'dirty room##');
-console.log(isAnagramOutput);
+// console.log(isAnagramOutput);
 
 // CHALLENGE 11: LETTER CHANGES
 // Change every letter of the string to the one that follows it
@@ -322,4 +322,50 @@ function letterChanges(string) {
 }
 
 const letterChangesOutput = letterChanges('hello there');
-console.log(letterChangesOutput);
+// console.log(letterChangesOutput);
+
+// CHALLENGE 12: ADD ALL NUMBERS
+// Return a sum of all parameters entered regardless of the amount of numbers - NO Arrays
+// ex. add(2, 5, 6, 7) === 20
+
+function addAll(...params) {
+	return params.reduce((acc, curr) => (acc += curr), 0);
+}
+
+const addAllOutput = addAll(2, 5, 6, 7);
+console.log(addAllOutput);
+
+// CHALLENGE 13: SUM ALL PRIMES
+// Pass in a number to loop to and add all of the prime numbers.
+// A prime number is a whole number greater than 1 whose only factors
+// are 1 and itself
+// ex. sumAllPrimes(10) === 17
+
+function sumAllPrimes(number) {
+	return 100;
+}
+
+const sumAllPrimesOutput = sumAllPrimes(100);
+console.log(sumAllPrimesOutput);
+
+// CHALLENGE 14: SEEK AND DESTROY
+// Remove from the array whatever is in the following arguments. Return the leftoever values
+// in the array
+// ex. seekAndDestroy([2, 3, 4, 6, 6, 'hello'], 2, 6) = [3, 4, 'hello']
+
+function seekAndDestroy(seekArray, ...destroyArgs) {
+	const indexArray = seekArray.map((element, index) => {
+		for (let i = 0; i < destroyArgs.length; i++) {
+			if (destroyArgs[i] === element) return index;
+		}
+	});
+
+	const outputArray = seekArray.filter((element, index) =>
+		indexArray.includes(index) ? false : true
+	);
+
+	return outputArray;
+}
+
+const seekAndDestroyOutput = seekAndDestroy([2, 3, 4, 6, 6, 'hello'], 2, 6);
+console.log(seekAndDestroyOutput);
