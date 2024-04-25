@@ -342,7 +342,19 @@ console.log(addAllOutput);
 // ex. sumAllPrimes(10) === 17
 
 function sumAllPrimes(number) {
-	return 100;
+	const primeArray = Array.from(Array(number))
+		.map((value, index) => index + 1)
+		.filter((value) => {
+			if (value < 2) return false;
+
+			for (let i = 2; i < value; i++) {
+				if (value % i === 0) return false;
+			}
+
+			return true;
+		});
+
+	return primeArray.reduce((acc, curr) => (acc += curr), 0);
 }
 
 const sumAllPrimesOutput = sumAllPrimes(100);
@@ -354,14 +366,8 @@ console.log(sumAllPrimesOutput);
 // ex. seekAndDestroy([2, 3, 4, 6, 6, 'hello'], 2, 6) = [3, 4, 'hello']
 
 function seekAndDestroy(seekArray, ...destroyArgs) {
-	const indexArray = seekArray.map((element, index) => {
-		for (let i = 0; i < destroyArgs.length; i++) {
-			if (destroyArgs[i] === element) return index;
-		}
-	});
-
-	const outputArray = seekArray.filter((element, index) =>
-		indexArray.includes(index) ? false : true
+	const outputArray = seekArray.filter((value) =>
+		destroyArgs.includes(value) ? false : true
 	);
 
 	return outputArray;
