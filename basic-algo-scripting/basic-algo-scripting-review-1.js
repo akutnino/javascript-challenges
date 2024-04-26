@@ -342,19 +342,23 @@ console.log(addAllOutput);
 // ex. sumAllPrimes(10) === 17
 
 function sumAllPrimes(number) {
-	const primeArray = Array.from(Array(number))
-		.map((value, index) => index + 1)
-		.filter((value) => {
-			if (value < 2) return false;
+	const primeNumbers = [];
 
-			for (let i = 2; i < value; i++) {
-				if (value % i === 0) return false;
-			}
+	function checkIfPrime(i) {
+		if (i < 2) return false;
 
-			return true;
-		});
+		for (let j = 2; j < i; j++) {
+			if (i % j === 0) return false;
+		}
 
-	return primeArray.reduce((acc, curr) => (acc += curr), 0);
+		return true;
+	}
+
+	for (let i = 1; i <= number; i++) {
+		if (checkIfPrime(i)) primeNumbers.push(i);
+	}
+
+	return primeNumbers.reduce((acc, curr) => (acc += curr), 0);
 }
 
 const sumAllPrimesOutput = sumAllPrimes(100);
@@ -362,16 +366,38 @@ console.log(sumAllPrimesOutput);
 
 // CHALLENGE 14: SEEK AND DESTROY
 // Remove from the array whatever is in the following arguments. Return the leftoever values
-// in the array
+// in the array. NOTE: you need to use the 'arguments' object.
 // ex. seekAndDestroy([2, 3, 4, 6, 6, 'hello'], 2, 6) = [3, 4, 'hello']
 
-function seekAndDestroy(seekArray, ...destroyArgs) {
+function seekAndDestroy(array) {
+	const seekArray = array;
+	const destroyArray = Array.from(arguments).splice(1);
+
 	const outputArray = seekArray.filter((value) =>
-		destroyArgs.includes(value) ? false : true
+		destroyArray.includes(value) ? false : true
 	);
 
 	return outputArray;
 }
 
-const seekAndDestroyOutput = seekAndDestroy([2, 3, 4, 6, 6, 'hello'], 2, 6);
+const seekAndDestroyOutput = seekAndDestroy(
+	[2, 3, 4, 6, 6, 'hello'],
+	2,
+	6,
+	'hello'
+);
 console.log(seekAndDestroyOutput);
+
+// CHALLENGE 15: SORT BY HEIGHT
+// Some people are standing in a row in a park. There are trees between them which
+// cannot be moved. Your task is to rearrange the people by their heights in a
+// non-descending order without moving the trees.
+// ex. a = [-1, 150, 190, 170, -1, -1, 160, 180]
+// sortByHeight(a) == [-1, 150, 160, 170, -1, -1, 180, 190]
+
+function sortByHeight(array) {
+	return;
+}
+
+const sortByHeightOutput = sortByHeight([-1, 150, 190, 170, -1, -1, 160, 180]);
+console.log(sortByHeightOutput);
