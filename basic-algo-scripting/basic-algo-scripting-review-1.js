@@ -31,3 +31,19 @@ function factorialize(number) {
 
 const factorializeOutput = factorialize(10);
 console.log(factorializeOutput);
+
+// Find the Longest Word in a String
+function findLongestWordLength(string) {
+	const outputLength = string
+		.split(' ')
+		.map((element) => element.length)
+		.sort()
+		.at(-1);
+
+	return outputLength;
+}
+
+const findLongestWordLengthOutput = findLongestWordLength(
+	'The quick brown fox jumped over the lazy dog'
+);
+console.log(findLongestWordLengthOutput);
