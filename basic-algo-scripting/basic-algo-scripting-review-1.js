@@ -12,16 +12,12 @@ console.log(convertToFahrenOuput);
 
 // Reverse a String
 function reverseString(string) {
-	const outputString = [];
+	const outputString = [...string].toReversed().join('');
 
-	for (let i = 0; i < string.length; i++) {
-		outputString.unshift([...string][i]);
-	}
-
-	return outputString.join('');
+	return outputString;
 }
 
-const reverseStringOutput = reverseString('Howdy');
+const reverseStringOutput = reverseString('hello');
 console.log(reverseStringOutput);
 
 // Factorialize a Number
