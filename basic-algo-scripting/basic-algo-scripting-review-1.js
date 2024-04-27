@@ -74,3 +74,14 @@ function confirmEnding(string, target) {
 
 const confirmEndingOutput = confirmEnding('Bastian', 'n');
 console.log(confirmEndingOutput);
+
+// Repeat a String Repeat a String
+function repeatStringNumTimes(string, number) {
+	if (number <= 0) return `''`;
+	return Array.from(Array(number))
+		.map(() => string)
+		.join('');
+}
+
+const repeatStringNumTimesOutput = repeatStringNumTimes('abc', 3);
+console.log(repeatStringNumTimesOutput);
