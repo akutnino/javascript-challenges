@@ -64,3 +64,13 @@ const largestOfFourOutput = largestOfFour([
 	[1000, 1001, 857, 1]
 ]);
 console.log(largestOfFourOutput);
+
+// Confirm the Ending
+function confirmEnding(string, target) {
+	const lastCharacter = string.substring(string.length - 1);
+
+	return lastCharacter === target;
+}
+
+const confirmEndingOutput = confirmEnding('Bastian', 'n');
+console.log(confirmEndingOutput);
