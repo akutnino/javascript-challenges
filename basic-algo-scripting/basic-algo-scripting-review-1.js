@@ -153,3 +153,16 @@ function bouncer(array) {
 
 const bouncerOutput = bouncer([7, 'ate', '', false, 9]);
 console.log(bouncerOutput);
+
+// Where do I Belong
+function getIndexToTns(array, number) {
+	return [...array, number]
+		.sort((a, b) => Number(a) - Number(b))
+		.reduce(
+			(acc, curr, index) => (curr === number ? (acc = index) : (acc += 0)),
+			0
+		);
+}
+
+const getIndexToTnsOutput = getIndexToTns([10, 20, 30, 40, 50], 35);
+console.log(getIndexToTnsOutput);
