@@ -126,3 +126,14 @@ function booWho(bool) {
 
 const booWhoOutput = booWho(true);
 console.log(booWhoOutput);
+
+// Title Case a Sentence
+function titleCase(string) {
+	return string
+		.split(' ')
+		.map((string) => string.at().toUpperCase() + string.slice(1).toLowerCase())
+		.join(' ');
+}
+
+const titleCaseOutput = titleCase(`sHoRt AnD sToUt`);
+console.log(titleCaseOutput);
