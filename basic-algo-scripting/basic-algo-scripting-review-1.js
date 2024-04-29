@@ -137,3 +137,11 @@ function titleCase(string) {
 
 const titleCaseOutput = titleCase(`sHoRt AnD sToUt`);
 console.log(titleCaseOutput);
+
+// Slice and Splice
+function frankenSplice(array1, array2, number) {
+	return array2.toSpliced(number, 0, array1).flat();
+}
+
+const frankenSpliceOutput = frankenSplice([1, 2, 3], [4, 5], 1);
+console.log(frankenSpliceOutput);
