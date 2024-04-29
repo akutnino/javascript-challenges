@@ -145,3 +145,11 @@ function frankenSplice(array1, array2, number) {
 
 const frankenSpliceOutput = frankenSplice([1, 2, 3], [4, 5], 1);
 console.log(frankenSpliceOutput);
+
+// Falsy Bouncer
+function bouncer(array) {
+	return array.filter((element) => element);
+}
+
+const bouncerOutput = bouncer([7, 'ate', '', false, 9]);
+console.log(bouncerOutput);
