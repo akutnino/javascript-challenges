@@ -177,3 +177,20 @@ function mutations(array) {
 
 const mutationsOutput = mutations(['Hello', 'hello']);
 console.log(mutationsOutput);
+
+// Chuncky Monkey
+function chunckArrayInGroups(array, size) {
+	const chunckArray = [];
+
+	for (let i = 0; i < array.length; i += size) {
+		chunckArray.push(array.slice(i, i + size));
+	}
+
+	return chunckArray;
+}
+
+const chunckArrayInGroupsOutput = chunckArrayInGroups(
+	['a', 'b', 'c', 'd', 'f'],
+	3
+);
+console.log(chunckArrayInGroupsOutput);
