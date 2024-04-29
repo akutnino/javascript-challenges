@@ -166,3 +166,14 @@ function getIndexToTns(array, number) {
 
 const getIndexToTnsOutput = getIndexToTns([10, 20, 30, 40, 50], 35);
 console.log(getIndexToTnsOutput);
+
+// Mutations
+function mutations(array) {
+	const arrayOne = [...array[0].toLowerCase()];
+	const arrayTwo = [...array[1].toLowerCase()];
+
+	return arrayTwo.every((val) => arrayOne.includes(val));
+}
+
+const mutationsOutput = mutations(['Hello', 'hello']);
+console.log(mutationsOutput);
