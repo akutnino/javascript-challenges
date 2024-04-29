@@ -118,3 +118,11 @@ const findElementOutput = findElement(
 	(num) => num % 2 === 0
 );
 console.log(findElementOutput);
+
+// Boo who
+function booWho(bool) {
+	return bool === true || bool === false ? true : false;
+}
+
+const booWhoOutput = booWho(true);
+console.log(booWhoOutput);
