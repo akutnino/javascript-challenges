@@ -96,3 +96,25 @@ const truncateStringOutput = truncateString(
 	8
 );
 console.log(truncateStringOutput);
+
+// Finders Keepers
+function findElement(array, callback) {
+	let num = 0;
+
+	for (let i = 0; i < array.length; i++) {
+		if (callback(array[i])) {
+			num = array[i];
+			break;
+		} else {
+			continue;
+		}
+	}
+
+	return num === 0 ? undefined : num;
+}
+
+const findElementOutput = findElement(
+	[1, 3, 5, 8, 9, 10],
+	(num) => num % 2 === 0
+);
+console.log(findElementOutput);
