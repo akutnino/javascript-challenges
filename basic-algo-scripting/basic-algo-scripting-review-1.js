@@ -194,3 +194,30 @@ const chunckArrayInGroupsOutput = chunckArrayInGroups(
 	3
 );
 console.log(chunckArrayInGroupsOutput);
+
+// Combine two array with alternating values
+function combineArrays(array1, array2) {
+	const combinedArray = [];
+	let arrayOneIndex = 0;
+	let arrayTwoIndex = 0;
+	let combinedArrayIndex = 0;
+
+	for (let i = 0; i < array1.length + array2.length; i++) {
+		if (arrayOneIndex > arrayTwoIndex) {
+			combinedArray[combinedArrayIndex] = array2[arrayTwoIndex];
+			arrayTwoIndex++;
+		} else {
+			combinedArray[combinedArrayIndex] = array1[arrayOneIndex];
+			arrayOneIndex++;
+		}
+		combinedArrayIndex++;
+	}
+
+	return combinedArray;
+}
+
+const combineArraysOutput = combineArrays(
+	['renzo', 'nino', 'kim'],
+	[10, 20, 30]
+);
+console.log(combineArraysOutput);
