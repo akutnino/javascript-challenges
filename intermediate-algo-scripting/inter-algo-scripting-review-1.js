@@ -28,3 +28,14 @@ const diffArrayOutput = diffArray(
 	['diorite', 'andesite', 'grass', 'dirt']
 );
 console.log(diffArrayOutput);
+
+// Seek and Destroy
+function destroyer() {
+	const seekArray = arguments[0];
+	const destroyArray = Array.from(arguments).slice(1);
+
+	return seekArray.filter((val) => (destroyArray.includes(val) ? false : true));
+}
+
+const destroyerOutput = destroyer(['tree', 'hamburger', 53], 'tree', 53);
+console.log(destroyerOutput);
