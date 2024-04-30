@@ -17,3 +17,14 @@ function sumAll(array) {
 
 const sumAllOutput = sumAll([5, 10]);
 console.log(sumAllOutput);
+
+// Diff Two Arrays
+function diffArray(array1, array2) {
+	return array2.filter((val) => (array1.includes(val) ? false : true));
+}
+
+const diffArrayOutput = diffArray(
+	['diorite', 'grass', 'dirt'],
+	['diorite', 'andesite', 'grass', 'dirt']
+);
+console.log(diffArrayOutput);
