@@ -51,9 +51,7 @@ function whatIsInAName(collection, source) {
 			(prop) => objectKeysArray.includes(prop) && object[prop] === source[prop]
 		);
 
-		if (hasAllKeyValues) {
-			arr.push(object);
-		}
+		if (hasAllKeyValues) arr.push(object);
 	});
 
 	return arr;
@@ -80,3 +78,42 @@ const whatIsInANameOutput = whatIsInAName(
 	}
 );
 console.log(whatIsInANameOutput);
+
+// Spinal Tap Case
+function spinalCase(string) {
+	const alphabetArray = Array.from(Array(26))
+		.map((val, index) => 'a'.charCodeAt() + index)
+		.map((val) => String.fromCharCode(val));
+
+	const stringArray = [...string]
+		.map((char) => (alphabetArray.includes(char.toLowerCase()) ? char : ' '))
+		.join('')
+		.split(' ');
+
+	const splittedArray = stringArray
+		.map((string) => {
+			const charArray = [...string]
+				.map((char, index) => {
+					while (!alphabetArray.includes(char) && index > 0) {
+						return [' ', char];
+					}
+
+					return char;
+				})
+				.flat()
+				.join('');
+
+			return charArray;
+		})
+		.join(' ');
+
+	const spinalCaseString = splittedArray
+		.split(' ')
+		.map((string) => string.toLowerCase())
+		.join('-');
+
+	return spinalCaseString;
+}
+
+const spinalCaseOutput = spinalCase('AllThe-small Things');
+console.log(spinalCaseOutput);
