@@ -39,3 +39,44 @@ function destroyer() {
 
 const destroyerOutput = destroyer(['tree', 'hamburger', 53], 'tree', 53);
 console.log(destroyerOutput);
+
+// Wherefore art thou
+function whatIsInAName(collection, source) {
+	const arr = [];
+
+	collection.forEach((object) => {
+		const objectKeysArray = Object.keys(object);
+		const sourceKeysArray = Object.keys(source);
+		const hasAllKeyValues = sourceKeysArray.every(
+			(prop) => objectKeysArray.includes(prop) && object[prop] === source[prop]
+		);
+
+		if (hasAllKeyValues) {
+			arr.push(object);
+		}
+	});
+
+	return arr;
+}
+
+const whatIsInANameOutput = whatIsInAName(
+	[
+		{
+			apple: 1,
+			bat: 2
+		},
+		{
+			bat: 2
+		},
+		{
+			apple: 1,
+			bat: 2,
+			cookie: 2
+		}
+	],
+	{
+		apple: 1,
+		bat: 2
+	}
+);
+console.log(whatIsInANameOutput);
