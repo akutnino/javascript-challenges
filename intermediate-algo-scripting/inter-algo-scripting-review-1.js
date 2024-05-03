@@ -43,15 +43,15 @@ console.log(destroyerOutput);
 // Wherefore art thou
 function whatIsInAName(collection, source) {
 	const arr = [];
+	const sourceKeys = Object.keys(source);
 
 	collection.forEach((object) => {
-		const objectKeysArray = Object.keys(object);
-		const sourceKeysArray = Object.keys(source);
-		const hasAllKeyValues = sourceKeysArray.every(
-			(prop) => objectKeysArray.includes(prop) && object[prop] === source[prop]
+		const objectKeys = Object.keys(object);
+		const hasAllProps = sourceKeys.every(
+			(key) => objectKeys.includes(key) && object[key] === source[key]
 		);
 
-		if (hasAllKeyValues) arr.push(object);
+		if (hasAllProps) arr.push(object);
 	});
 
 	return arr;
@@ -81,8 +81,10 @@ console.log(whatIsInANameOutput);
 
 // Spinal Tap Case
 function spinalCase(string) {
-	const alphabetArray = Array.from(Array(26))
-		.map((val, index) => 'a'.charCodeAt() + index)
+	const TOTAL_ALPHABET_LETTERS = 26;
+
+	const alphabetArray = Array.from(Array(TOTAL_ALPHABET_LETTERS))
+		.map((val, index) => index + 'a'.charCodeAt())
 		.map((val) => String.fromCharCode(val));
 
 	const stringArray = [...string]
@@ -90,30 +92,27 @@ function spinalCase(string) {
 		.join('')
 		.split(' ');
 
-	const splittedArray = stringArray
+	const splittedStringArray = stringArray
 		.map((string) => {
-			const charArray = [...string]
+			return [...string]
 				.map((char, index) => {
-					while (!alphabetArray.includes(char) && index > 0) {
-						return [' ', char];
-					}
+					const charSplitNeeded = !alphabetArray.includes(char) && index !== 0;
 
+					if (charSplitNeeded) return [' ', char];
 					return char;
 				})
 				.flat()
 				.join('');
-
-			return charArray;
 		})
-		.join(' ');
+		.map((char) => char.split(' '))
+		.flat();
 
-	const spinalCaseString = splittedArray
-		.split(' ')
-		.map((string) => string.toLowerCase())
-		.join('-');
+	const spinalCaseOutput = splittedStringArray.join('-').toLowerCase();
 
-	return spinalCaseString;
+	return spinalCaseOutput;
 }
 
-const spinalCaseOutput = spinalCase('AllThe-small Things');
+const spinalCaseOutput = spinalCase(
+	'Look-atAll+the/small,and7Tall_ThingsAroundYou?Huh'
+);
 console.log(spinalCaseOutput);
