@@ -116,3 +116,28 @@ const spinalCaseOutput = spinalCase(
 	'Look-atAll+the/small,and7Tall_ThingsAroundYou?Huh'
 );
 console.log(spinalCaseOutput);
+
+// Pig Latin
+function translatePigLatin(string) {
+	const vowelArray = ['a', 'e', 'i', 'o', 'u'];
+	const isVowel = vowelArray.includes([...string].at(0));
+
+	if (isVowel) return [...string, 'way'].join('');
+
+	const consonantCluster = [];
+
+	for (let i = 0; i < [...string].length; i++) {
+		if (!vowelArray.includes([...string][i])) {
+			consonantCluster.push([...string][i]);
+		} else {
+			break;
+		}
+	}
+
+	return [string.slice(consonantCluster.length), consonantCluster, 'ay']
+		.flat()
+		.join('');
+}
+
+const translatePigLatinOutput = translatePigLatin('schwartz');
+console.log(translatePigLatinOutput);
