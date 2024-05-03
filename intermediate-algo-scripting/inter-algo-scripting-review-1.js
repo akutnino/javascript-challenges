@@ -141,3 +141,31 @@ function translatePigLatin(string) {
 
 const translatePigLatinOutput = translatePigLatin('schwartz');
 console.log(translatePigLatinOutput);
+
+// Search and Replace
+function myReplace(string, before, after) {
+	const alphabetArray = Array.from(Array(26))
+		.map((val, index) => index + 'a'.charCodeAt())
+		.map((val) => String.fromCharCode(val));
+
+	return string
+		.split(' ')
+		.map((str) => {
+			const isLowerCase = alphabetArray.includes(before.at());
+			const lowerCased = after.at().toLowerCase() + after.slice(1);
+			const upperCased = after.at().toUpperCase() + after.slice(1);
+
+			if (str === before && isLowerCase) return lowerCased;
+			if (str === before && !isLowerCase) return upperCased;
+
+			return str;
+		})
+		.join(' ');
+}
+
+const myReplaceOutput = myReplace(
+	'A quick brown fox Jumped over the lazy dog',
+	'Jumped',
+	'leaped'
+);
+console.log(myReplaceOutput);
