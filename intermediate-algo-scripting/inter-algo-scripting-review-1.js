@@ -169,3 +169,27 @@ const myReplaceOutput = myReplace(
 	'leaped'
 );
 console.log(myReplaceOutput);
+
+// DNA Pairing
+function pairElement(string) {
+	const dnaPairArray = [...string].map((char) => {
+		switch (char) {
+			case 'A':
+				return ['A', 'T'];
+			case 'T':
+				return ['T', 'A'];
+			case 'C':
+				return ['C', 'G'];
+			case 'G':
+				return ['G', 'C'];
+
+			default:
+				return 'Invalid';
+		}
+	});
+
+	return dnaPairArray;
+}
+
+const pairElementOutput = pairElement('GCG');
+console.log(pairElementOutput);
