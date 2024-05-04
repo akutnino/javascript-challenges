@@ -213,3 +213,22 @@ function fearNotLetter(string) {
 
 const fearNotLetterOutput = fearNotLetter('abcdefghijklmnopqrstuvwxz');
 console.log(fearNotLetterOutput);
+
+// Sorted Union
+function uniteUnique(...arr) {
+	return arr.reduce((acc, curr) => {
+		curr.forEach((val) => {
+			if (!acc.includes(val)) acc.push(val);
+		});
+
+		return acc;
+	}, []);
+}
+
+const uniteUniqueOutput = uniteUnique(
+	[1, 2, 3],
+	[5, 2, 1, 4],
+	[2, 1],
+	[6, 7, 8]
+);
+console.log(uniteUniqueOutput);
