@@ -193,3 +193,23 @@ function pairElement(string) {
 
 const pairElementOutput = pairElement('GCG');
 console.log(pairElementOutput);
+
+// Missing Letters
+function fearNotLetter(string) {
+	const charCodeArray = [...string].map((char) => char.charCodeAt());
+	const completecharCode = [];
+
+	for (let i = charCodeArray.at(); i <= charCodeArray.at(-1); i++) {
+		completecharCode.push(i);
+	}
+
+	const missingLetters = completecharCode
+		.filter((char) => !charCodeArray.includes(char))
+		.map((val) => String.fromCharCode(val))
+		.join('');
+
+	return missingLetters.length === 0 ? undefined : missingLetters;
+}
+
+const fearNotLetterOutput = fearNotLetter('abcdefghijklmnopqrstuvwxz');
+console.log(fearNotLetterOutput);
