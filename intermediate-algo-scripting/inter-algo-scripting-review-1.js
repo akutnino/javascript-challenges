@@ -95,21 +95,16 @@ function spinalCase(string) {
 	const splittedStringArray = stringArray
 		.map((string) => {
 			return [...string]
-				.map((char, index) => {
-					const charSplitNeeded = !alphabetArray.includes(char) && index !== 0;
-
-					if (charSplitNeeded) return [' ', char];
-					return char;
-				})
+				.map((char, index) =>
+					!alphabetArray.includes(char) && index !== 0 ? [' ', char] : char
+				)
 				.flat()
 				.join('');
 		})
 		.map((char) => char.split(' '))
 		.flat();
 
-	const spinalCaseOutput = splittedStringArray.join('-').toLowerCase();
-
-	return spinalCaseOutput;
+	return splittedStringArray.join('-').toLowerCase();
 }
 
 const spinalCaseOutput = spinalCase(
