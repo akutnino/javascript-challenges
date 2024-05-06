@@ -227,3 +227,28 @@ const uniteUniqueOutput = uniteUnique(
 	[6, 7, 8]
 );
 console.log(uniteUniqueOutput);
+
+// Convert HTML Entities
+function convertHTML(string) {
+	return [...string]
+		.map((char, index, array) => {
+			switch (char) {
+				case '&':
+					return '&amp;';
+				case '<':
+					return '&lt;';
+				case '>':
+					return '&gt;';
+				case `'`:
+					return '&apos;';
+				case `"`:
+					return index > 0 && array[0] !== `"` ? '&quot;' : '';
+				default:
+					return char;
+			}
+		})
+		.join('');
+}
+
+const convertHTMLOutput = convertHTML(`Stuff in "quotation marks"`);
+console.log(convertHTMLOutput);
