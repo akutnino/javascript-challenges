@@ -252,3 +252,21 @@ function convertHTML(string) {
 
 const convertHTMLOutput = convertHTML(`Stuff in "quotation marks"`);
 console.log(convertHTMLOutput);
+
+// Sum All Odd Fibonacci Numbers
+function sumFibs(nums) {
+	const fiblsArray = [0, 1];
+
+	for (let i = 0; i <= nums; i++) {
+		if (fiblsArray[i] + fiblsArray[i + 1] > nums) break;
+		fiblsArray.push(fiblsArray[i] + fiblsArray[i + 1]);
+	}
+
+	return fiblsArray.reduce(
+		(acc, curr) => (curr % 2 !== 0 ? (acc += curr) : (acc += 0)),
+		0
+	);
+}
+
+const sumFibsOutput = sumFibs(75024);
+console.log(sumFibsOutput);
