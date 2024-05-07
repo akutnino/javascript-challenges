@@ -2,17 +2,12 @@
 
 // Sum All Numbers in a Range
 function sumAll(array) {
-	const NEEDED_INDEX = 1;
-	const [firstNumber, secondNumber] = array;
-	const smallNumber = firstNumber < secondNumber ? firstNumber : secondNumber;
-	const largeNumber = secondNumber > firstNumber ? secondNumber : firstNumber;
-	const totalValues = largeNumber - smallNumber + NEEDED_INDEX;
+	const [min, max] = array.toSorted((a, b) => Number(a) - Number(b));
+	const totalValues = max - min + 1;
 
-	const sumTotal = Array.from(Array(totalValues))
-		.map((val, index) => index + smallNumber)
+	return Array.from(Array(totalValues))
+		.map((val, index) => index + min)
 		.reduce((acc, curr) => (acc += curr), 0);
-
-	return sumTotal;
 }
 
 const sumAllOutput = sumAll([5, 10]);
@@ -167,7 +162,7 @@ console.log(myReplaceOutput);
 
 // DNA Pairing
 function pairElement(string) {
-	const dnaPairArray = [...string].map((char) => {
+	return [...string].map((char) => {
 		switch (char) {
 			case 'A':
 				return ['A', 'T'];
@@ -182,8 +177,6 @@ function pairElement(string) {
 				return 'Invalid';
 		}
 	});
-
-	return dnaPairArray;
 }
 
 const pairElementOutput = pairElement('GCG');
@@ -289,3 +282,11 @@ function sumPrimes(num) {
 
 const sumPrimesOutput = sumPrimes(977);
 console.log(sumPrimesOutput);
+
+// Smallest Common Multiple
+function smallestCommon(array) {
+	return array;
+}
+
+const smallestCommonOutput = smallestCommon([23, 18]);
+console.log(smallestCommonOutput);
