@@ -270,3 +270,22 @@ function sumFibs(nums) {
 
 const sumFibsOutput = sumFibs(75024);
 console.log(sumFibsOutput);
+
+// Sum All Primes
+function sumPrimes(num) {
+	return Array.from(Array(num))
+		.map((val, index) => index + 1)
+		.filter((val) => {
+			if (val < 2) return;
+
+			for (let i = 2; i < val; i++) {
+				if (val % i === 0) return;
+			}
+
+			return true;
+		})
+		.reduce((acc, curr) => (acc += curr), 0);
+}
+
+const sumPrimesOutput = sumPrimes(977);
+console.log(sumPrimesOutput);
