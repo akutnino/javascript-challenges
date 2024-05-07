@@ -285,8 +285,20 @@ console.log(sumPrimesOutput);
 
 // Smallest Common Multiple
 function smallestCommon(array) {
-	return array;
+	const [min, max] = array.toSorted((a, b) => Number(a) - Number(b));
+	let multiple = max;
+
+	for (let i = min; i <= max; i++) {
+		if (multiple % i > 0) {
+			multiple += max;
+			i = min - 1;
+		}
+
+		if (i === max) break;
+	}
+
+	return multiple;
 }
 
-const smallestCommonOutput = smallestCommon([23, 18]);
+const smallestCommonOutput = smallestCommon([5, 1]);
 console.log(smallestCommonOutput);
